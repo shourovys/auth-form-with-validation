@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormItemStyles } from './Form.styles';
 
-const FormItem = ({placeHolder}) => {
+const FormItem = ({name,placeHolder,  handelBlur}) => {
     return (
-        <FormItemStyles placeholder={placeHolder} type='text'/>
+        <FormItemStyles onBlur={(e)=>handelBlur(e)} name={name} placeholder={placeHolder} type='text' required/>
     );
 };
 
