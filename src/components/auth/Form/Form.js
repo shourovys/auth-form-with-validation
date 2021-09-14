@@ -6,20 +6,20 @@ import FormItem from "./FormItem";
 const Form = () => {
   const [isOldUser, setIsOldUser] = useState(true);
   const [formData, setFormData] = useState({});
-  const [errorData, setErrorData] = useState({})
-  console.log("🚀 ~ file: Form.js ~ line 10 ~ Form ~ errorData", errorData)
+  const [errorData, setErrorData] = useState({});
+  console.log("🚀 ~ file: Form.js ~ line 10 ~ Form ~ errorData", errorData);
 
   const handelBlur = (e) => {
     //checking input value
-    const newErrorValue = FormValidation(e.target.name, e.target.value,)
-    setErrorData(errorData=>({...errorData,...newErrorValue}))
-    
+    const newErrorValue = FormValidation(e.target.name, e.target.value);
+    setErrorData((errorData) => ({ ...errorData, ...newErrorValue }));
+
     //setting input value in state
     setFormData((formData) => ({
       ...formData,
       [e.target.name]: e.target.value,
     }));
-    
+
     //checking input value
     // let newErrorList = [];
     // for (const key in formData) {
@@ -34,21 +34,33 @@ const Form = () => {
     <FormContainer isOldUser={isOldUser}>
       <h1>Welcome Back!</h1>
       <p>Please login to your account</p>
-      <FormItem name="name" placeHolder="Username" handelBlur={handelBlur} />
+      <FormItem
+        name="name"
+        placeHolder="Username"
+        handelBlur={handelBlur}
+        errorData={errorData.name}
+      />
       {!isOldUser && (
         <>
           <FormItem
             name="phone"
             placeHolder="Phone number"
             handelBlur={handelBlur}
+            errorData={errorData.phone}
           />
-          <FormItem name="email" placeHolder="Email" handelBlur={handelBlur} />
+          <FormItem
+            name="email"
+            placeHolder="Email"
+            handelBlur={handelBlur}
+            errorData={errorData.email}
+          />
         </>
       )}
       <FormItem
         name="password"
         placeHolder="Password"
         handelBlur={handelBlur}
+        errorData={errorData.password}
       />
 
       {isOldUser && (

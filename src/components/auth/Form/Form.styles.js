@@ -79,7 +79,7 @@ export const FormItemStyles = styled.input`
   outline: none;
   border: 0;
   border-radius: 0;
-  border-bottom: 1px solid #a9a9a9;
+  border-bottom: ${({errorData})=>errorData? '1px solid red' : '1px solid #a9a9a9'} ;
   padding: 0.5rem;
   margin-bottom: 1rem;
   font-weight: 500;
