@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import openNotification from "../../../helper/notification";
 import useLocalStorage from "../../../hook/useLocalStorage";
 import FormValidation from "../../../validation/FormValidation";
@@ -11,7 +12,8 @@ const Form = () => {
   const [errorData, setErrorData] = useState({});
 
   const [users, setUser] = useLocalStorage("users", []);
-  console.log("🚀 ~ file: Form.js ~ line 13 ~ Form ~ user", users);
+
+  const history = useHistory();
 
   const handelBlur = (e) => {
     //checking input value
@@ -40,7 +42,11 @@ const Form = () => {
     const isUser = users.find((user) =>
       user.email === email && user.password === password ? user : null
     );
-    console.log(isUser);
+    if (isUser) {
+      history.push("/user");
+    } else {
+      openNotification("error", "User not found");
+    }
   };
 
   const login = (e) => {
@@ -51,22 +57,29 @@ const Form = () => {
       return openNotification("error", "All input value not given");
     }
     if (!errorData.email || !errorData.password) {
-      return checkUser(formData)
+      return checkUser(formData);
     }
-    return ;
+    return;
   };
 
   const signUp = (e) => {
     e.preventDefault();
     recheckUserInput();
     const { name, phone, email, password } = formData;
-    if ((!name || !phone || !email || !password)) {
+    if (!name || !phone || !email || !password) {
       return openNotification("error", "All input value not given");
     }
-    if (!errorData.name || !errorData.phone || !errorData.email || !errorData.password) {
-      return setUser(formData)
+   
+    if (
+      !errorData.name &&
+      !errorData.phone &&
+      !errorData.email &&
+      !errorData.password
+    ) {
+      setUser(formData);
+      history.push("/user");
     }
-    return ;
+
   };
 
   return (
