@@ -1,10 +1,7 @@
 import { notification } from "antd";
 
-const key = 'updatable';
-
-const openNotification = ( title, description) => {
-  notification.open({
-    key,
+const openNotification = (type, title, description) => {
+  notification[type]({
     message: title,
     description: description,
   });

@@ -9,6 +9,7 @@ const FormValidation = (name, value) => {
     case "name":
       if (!/^[a-zA-Z ]*$/.test(value)) {
         openNotification(
+          "error",
           `${name} incorrect`,
           "User Name mast be only letters and spaces"
         );
@@ -19,6 +20,7 @@ const FormValidation = (name, value) => {
     case "phone":
       if (!/^\d{10}$/.test(value)) {
         openNotification(
+          "error",
           `${name} incorrect`,
           "Phone Number mast be  10 digit number only"
         );
@@ -32,6 +34,7 @@ const FormValidation = (name, value) => {
       console.log(!emailRegex.test(value));
       if (!emailRegex.test(value)) {
         openNotification(
+          "error",
           `${name} incorrect`,
           "Enter a validation email address"
         );
@@ -45,6 +48,7 @@ const FormValidation = (name, value) => {
       console.log(!passwordRegex.test(value));
       if (!passwordRegex.test(value)) {
         openNotification(
+          "error",
           `${name} incorrect`,
           "Password must contain minimum eight characters, at least one letter, one number and one special character:"
         );

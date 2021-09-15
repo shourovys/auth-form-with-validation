@@ -9,11 +9,11 @@ export const FormContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ${({isOldUser})=>isOldUser?'6rem':'2rem'} ;
+  margin-top: ${({ isOldUser }) => (isOldUser ? "6rem" : "1.2rem")};
 
-  @media screen and (max-width: 680px) {
-    margin-top: 3rem;
-  }
+  /* @media screen and (max-width: 680px) {
+    margin-top: 2rem;
+  } */
 
   & h1 {
     margin-bottom: 4px;
@@ -24,26 +24,28 @@ export const FormContainer = styled.section`
     margin-bottom: 2rem;
   }
 
-  & > div {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin: 1rem;
-
-    & div {
+  & form {
+    & > div {
       display: flex;
       align-items: center;
-      gap: 2px;
-    }
+      gap: 2rem;
+      margin: 1rem .2rem;
 
-    & label {
-      font-size: 12px;
-    }
+      & div {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
 
-    & P {
-      margin-bottom: 0;
-      color: #61acb3;
-      cursor: pointer;
+      & label {
+        font-size: 12px;
+      }
+
+      & P {
+        margin-bottom: 0;
+        color: #61acb3;
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -52,8 +54,8 @@ export const Button = styled.button`
   min-width: 240px;
   border-radius: 50px;
   padding: 5px 0;
-  margin-bottom: 1rem ;
-  margin-top: .5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
   border: none;
   outline: none;
   color: white;
@@ -66,7 +68,7 @@ export const Pointer = styled.p`
 `;
 
 export const Footer = styled.p`
-  margin-top: ${({isOldUser})=>isOldUser?'3rem':'.8rem'} ;
+  margin-top: ${({ isOldUser }) => (isOldUser ? "3rem" : ".8rem")};
   margin-bottom: 0px !important;
   @media screen and (max-width: 680px) {
     margin-top: 1.5rem;
@@ -79,8 +81,10 @@ export const FormItemStyles = styled.input`
   outline: none;
   border: 0;
   border-radius: 0;
-  border-bottom: ${({errorData})=>errorData? '1px solid red' : '1px solid #a9a9a9'} ;
+  border-bottom: ${({ errorData }) =>
+    errorData ? "1px solid red" : "1px solid #a9a9a9"};
   padding: 0.5rem;
+  margin:0 auto;
   margin-bottom: 1rem;
   font-weight: 500;
   min-width: 240px;
