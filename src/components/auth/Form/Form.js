@@ -44,6 +44,7 @@ const Form = () => {
     );
     if (isUser) {
       history.push("/user");
+      openNotification("success", "User Log in Successful");
     } else {
       openNotification("error", "User not found");
     }
@@ -78,6 +79,7 @@ const Form = () => {
     ) {
       setUser(formData);
       history.push("/user");
+      openNotification("success", "User Sign Up Successful");
     }
 
   };
